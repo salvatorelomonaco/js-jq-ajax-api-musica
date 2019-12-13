@@ -37,8 +37,11 @@
         </main>
         <!-- Handlebars template -->
         <script id="template" type="text/x-handlebars-template">
-            <div class="song">
-                <img src="{{ cover }}" alt="">
+            <div class="song" data-genere="{{ genere }}">
+                <div class="img-container">
+                    <img src="{{ cover }}" alt="">
+                    <i class="fas fa-play"></i>
+                </div>
                 <div class="info">
                     <h2>{{ titolo }}</h2>
                     <span>{{ nome }}, {{ anno }}</span>

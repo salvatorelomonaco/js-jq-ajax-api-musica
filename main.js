@@ -12,15 +12,19 @@ $(document).ready(function() {
                 var currentTitle = information[i].title;
                 var currentName = information[i].author;
                 var currentYear = information[i].year;
+                var currentGenre = information[i].genre;
+                console.log(currentGenre);
 
                 var attributes = {
                     'cover':currentImg,
                     'titolo':currentTitle,
                     'nome': currentName,
-                    'anno': currentYear
+                    'anno': currentYear,
+                    "genere": currentGenre
                 }
 
                 var html = templateFunction(attributes);
+                console.log(html);
                 $('.container-songs').append(html);
             };
         },
@@ -29,7 +33,22 @@ $(document).ready(function() {
         }
     });
 
-    $('#generi').click()
+    $('#generi').change(function() {
+        var genereSelettore = $('#generi').val();
+        if (genereSelettore == '') {
+            $('.song').show();
+        } else {
+
+            $('.song').hide();
+
+            $('.song').each(function() {
+                var genereCorrente = $(this).attr('data-genere');
+                if (genereCorrente.toLowerCase() == genereSelettore.toLowerCase()) {
+                    $(this).show();
+                }
+            });
+        }
+    });
 });
 
 $(document).on('scroll', function () {
