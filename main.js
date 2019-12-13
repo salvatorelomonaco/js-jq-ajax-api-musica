@@ -2,21 +2,27 @@ $(document).ready(function() {
 
     var templateFunction = Handlebars.compile($('#template').html());
 
-    var attributes = {
-        'cover':'https:\/\/www.onstageweb.com\/wp-content\/uploads\/2018\/09\/bon-jovi-new-jersey.jpg',
-        'titolo':'New Jersey',
-        'nome': 'Bon Jovi',
-        'anno': '1998'
-    }
-
-    var html = templateFunction(attributes);
-    $('.container-songs').append(html);
-
     $.ajax({
-        'url': ' https://flynn.boolean.careers/exercises/api/array/music',
+        'url': 'https://flynn.boolean.careers/exercises/api/array/music',
         'method': 'GET',
         'success': function(data) {
-            console.log(data);
+            var information = data.response;
+            for (var i = 0; i < information.length; i++) {
+                var currentImg = information[i].poster;
+                var currentTitle = information[i].title;
+                var currentName = information[i].author;
+                var currentYear = information[i].year;
+
+                var attributes = {
+                    'cover':currentImg,
+                    'titolo':currentTitle,
+                    'nome': currentName,
+                    'anno': currentYear
+                }
+
+                var html = templateFunction(attributes);
+                $('.container-songs').append(html);
+            };
         },
         'error': function() {
 
