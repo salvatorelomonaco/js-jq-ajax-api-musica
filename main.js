@@ -13,7 +13,6 @@ $(document).ready(function() {
                 var currentName = information[i].author;
                 var currentYear = information[i].year;
                 var currentGenre = information[i].genre;
-                console.log(currentGenre);
 
                 var attributes = {
                     'cover':currentImg,
@@ -24,7 +23,6 @@ $(document).ready(function() {
                 }
 
                 var html = templateFunction(attributes);
-                console.log(html);
                 $('.container-songs').append(html);
             };
         },
@@ -33,8 +31,12 @@ $(document).ready(function() {
         }
     });
 
-    $('#generi').change(function() {
-        var genereSelettore = $('#generi').val();
+    $('.generi').click(function() {
+        $('.generi').toggleClass('lighter-background');
+    });
+
+    $('.generi').change(function() {
+        var genereSelettore = $('.generi').val();
         if (genereSelettore == '') {
             $('.song').show();
         } else {
@@ -49,8 +51,13 @@ $(document).ready(function() {
             });
         }
     });
-});
 
-$(document).on('scroll', function () {
-    $('header').addClass('orange-border');
-})
+    $(window).scroll(function() {
+        var scroll_offset = $(window).scrollTop();
+        if (scroll_offset > 0) {
+            $("header").addClass("orange-border");
+        } else {
+            $("header").removeClass("orange-border");
+        }
+    });
+});
