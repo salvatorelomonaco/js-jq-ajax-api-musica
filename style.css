@@ -14,6 +14,7 @@ body {
     left: 0;
     display: flex;
     align-items: center;
+    z-index: -1;
 }
 
 .layout p {
@@ -26,6 +27,12 @@ body {
 header {
     width: 100%;
     height: 80px;
+    position: fixed;
+    background-color: #232123;
+}
+
+.orange-border{
+    border-bottom: 3px solid orange;
 }
 
 header ul {
@@ -42,19 +49,49 @@ header ul li {
     margin: 20px;
     text-transform: uppercase;
     cursor: pointer;
+    transition: .2s;
+}
+
+header ul li:hover {
+    color: orange;
 }
 
 main {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
+    padding-top: 100px;
 }
+
+#generi {
+    width: 300px;
+    height: 50px;
+    cursor: pointer;
+    background-color: #2a282a;
+    color: white;
+    font-size: 17px;
+    text-transform: uppercase;
+    border: 0;
+    border-bottom: 3px solid orange;
+    margin-bottom: 30px;
+}
+
+#generi option {
+    background-color: #232123;
+    border-bottom: 2px solid orange;
+    transition: .2s;
+    cursor: pointer
+}
+
+#generi option:hover {
+    background-color: #2a282a;
+}
+
 
 .container-songs {
     width: 1000px;
-    z-index: 2;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -69,7 +106,6 @@ main {
     margin-bottom: 20px;
     display: flex;
     color: white;
-
 }
 
 .song img {

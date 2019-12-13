@@ -28,4 +28,10 @@ $(document).ready(function() {
 
         }
     });
+
+    $('#generi').click()
 });
+
+$(document).on('scroll', function () {
+    $('header').addClass('orange-border');
+})
